@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "@robotsnacks/cst-cli",
+  "description": "Cardsetter data transformation command line utility.",
+  "license": "UNLICENSED",
+  "author": "Joshua Toenyes <josh@robotsnacks.io>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RobotSnacks/cst.git"
+  },
+  "version": "0.0.1",
+  "main": "dist/commonjs",
+  "module": "dist/esmodules",
+  "types": "src",
+  "dependencies": {
+    "@babel/runtime": "^7.6.0",
+    "chalk": "^3.0.0",
+    "configstore": "^5.0.0",
+    "got": "^9.6.0",
+    "inquirer": "^7.0.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
+    "minimist": "^1.2.0",
+    "prettyjson": "^1.2.1",
+    "string-template": "^1.0.0",
+    "table": "^5.3.3"
+  },
+  "keywords": [],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "esnext": "dist/esnext",
+  "sideEffects": false,
+  "ts:main": "src"
+}
