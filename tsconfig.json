@@ -1,0 +1,21 @@
+{
+  "include": [],
+  "compilerOptions": {
+    "allowJs": false,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": ["es2019"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noLib": false,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "skipLibCheck": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "esnext"
+  }
+}

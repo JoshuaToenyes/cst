@@ -1,0 +1,7 @@
+{
+  "dist/umd/cst-wordpress.min.js": {
+    "bundled": 447,
+    "minified": 286,
+    "gzipped": 212
+  }
+}
