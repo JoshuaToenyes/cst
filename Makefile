@@ -42,7 +42,9 @@ default: bootstrap
 	$(MAKE) all
 
 .PHONY: all
-all: build bundle
+all:
+	$(MAKE) build
+	$(MAKE) bundle
 
 # ------------------------------------------------------------------------------
 #
