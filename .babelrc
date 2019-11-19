@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": {
+      "presets": [["@babel/preset-env", { "modules": false }]],
+      "plugins": [
+        "lodash",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-object-assign",
+        "@babel/plugin-transform-runtime"
+      ],
+      "inputSourceMap": true,
+      "sourceMaps": true
+    },
+    "node": {
+      "presets": [["@babel/preset-env", { "targets": { "node": 12 } }]],
+      "plugins": [
+        "lodash",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-object-assign"
+      ],
+      "inputSourceMap": true,
+      "sourceMaps": true
+    }
+  }
+}

@@ -1,0 +1,45 @@
+name: Build and Test
+
+on: [push]
+
+env:
+  CI: true
+
+jobs:
+  build:
+    name: Run Unit Tests and Build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Cache node_modules
+        uses: actions/cache@preview
+        with:
+          path: ~/.cache/yarn
+          key:
+            ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}',
+            github.workspace, '/yarn.lock')) }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Bootstrap
+        run: make bootstrap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+
+      - name: Lint
+        run: make lint
+
+      - name: Run Unit Tests
+        run: make unit-test
+
+      - name: Build Packages
+        run: make all --jobs=2

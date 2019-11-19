@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "@robotsnacks/cst-wordpress",
+  "description": "Cardsetter/WordPress data transformation utilities.",
+  "license": "UNLICENSED",
+  "author": "Joshua Toenyes <josh@robotsnacks.io>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RobotSnacks/cst.git"
+  },
+  "version": "0.0.1",
+  "main": "dist/commonjs",
+  "module": "dist/esmodules",
+  "types": "src",
+  "dependencies": {},
+  "keywords": [],
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "esnext": "dist/esnext",
+  "sideEffects": false,
+  "ts:main": "src"
+}
