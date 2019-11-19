@@ -17,6 +17,7 @@ ROLLUP_FLAGS := --config $(ROLLUP_CONFIG)
 JEST_FLAGS := --ci --passWithNoTests --config ./jest.config.js
 ESLINT_FLAGS := --config .eslintrc.js "packages/*/src/**/*.ts"
 
+
 # ------------------------------------------------------------------------------
 #
 # Convenience Targets
@@ -27,6 +28,7 @@ ESLINT_FLAGS := --config .eslintrc.js "packages/*/src/**/*.ts"
 # ------------------------------------------------------------------------------
 
 all: build
+
 
 # ------------------------------------------------------------------------------
 #
@@ -44,6 +46,7 @@ all: build
 build: cli wordpress
 
 test: test-cli test-wordpress
+
 
 # ------------------------------------------------------------------------------
 #
@@ -69,6 +72,7 @@ wordpress:
 	BABEL_ENV=node $(BABEL) dist/esnext -d dist/cjs $(BABEL_FLAGS) && \
 	NODE_ENV=development $(ROLLUP) $(ROLLUP_FLAGS) && \
 	NODE_ENV=production $(ROLLUP) $(ROLLUP_FLAGS)
+
 
 # ------------------------------------------------------------------------------
 #
