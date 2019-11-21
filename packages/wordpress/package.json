@@ -12,7 +12,16 @@
   "main": "dist/commonjs",
   "module": "dist/esmodules",
   "types": "src",
-  "dependencies": {},
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "mime-types": "^2.1.25",
+    "xml2js": "^0.4.22"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.14",
+    "@types/mime-types": "^2.1.0",
+    "@types/xml2js": "^0.4.5"
+  },
   "keywords": [],
   "publishConfig": {
     "access": "restricted",

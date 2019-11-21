@@ -11,6 +11,9 @@
   "version": "0.0.1",
   "main": "dist/commonjs",
   "module": "dist/esmodules",
+  "bin": {
+    "cst": "bin/cst"
+  },
   "types": "src",
   "dependencies": {
     "@babel/runtime": "^7.6.0",
