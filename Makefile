@@ -68,10 +68,15 @@ cli:
 wordpress:
 	cd $(PACKAGES_DIR)/wordpress && \
 	$(TSC) $(TSC_FLAGS) && \
-	BABEL_ENV=browser $(BABEL) dist/esnext -d dist/esm $(BABEL_FLAGS) && \
-	BABEL_ENV=node $(BABEL) dist/esnext -d dist/cjs $(BABEL_FLAGS) && \
-	NODE_ENV=development $(ROLLUP) $(ROLLUP_FLAGS) && \
-	NODE_ENV=production $(ROLLUP) $(ROLLUP_FLAGS)
+	BABEL_ENV=node $(BABEL) dist/esnext -d dist/cjs $(BABEL_FLAGS)
+
+#wordpress:
+#	cd $(PACKAGES_DIR)/wordpress && \
+#	$(TSC) $(TSC_FLAGS) && \
+#	BABEL_ENV=browser $(BABEL) dist/esnext -d dist/esm $(BABEL_FLAGS) && \
+#	BABEL_ENV=node $(BABEL) dist/esnext -d dist/cjs $(BABEL_FLAGS) && \
+#	NODE_ENV=development $(ROLLUP) $(ROLLUP_FLAGS) && \
+#	NODE_ENV=production $(ROLLUP) $(ROLLUP_FLAGS)
 
 
 # ------------------------------------------------------------------------------
