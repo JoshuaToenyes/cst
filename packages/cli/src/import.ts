@@ -294,20 +294,26 @@ export const runImport = async (wxrPath: string) => {
   });
 
   const wxr = await readFile(wxrPath, { encoding: 'utf8' });
-  // const images = await parseImagesFromWxr(wxr);
-  // const tags = await parseTagsFromWxr(wxr);
+  const images = await parseImagesFromWxr(wxr);
+  const tags = await parseTagsFromWxr(wxr);
   const pages = await parsePagesFromWxr(wxr, result.images);
+
+  fs.writeFileSync('./tags.json', JSON.stringify(tags, null, 2), {
+    encoding: 'utf8',
+  });
+
+  fs.writeFileSync('./images.json', JSON.stringify(images, null, 2), {
+    encoding: 'utf8',
+  });
 
   fs.writeFileSync('./pages.json', JSON.stringify(pages, null, 2), {
     encoding: 'utf8',
   });
 
-  // console.log(pages);
-
   try {
-    await importPages(result, pages);
     // await importImages(result, images);
     // await importTags(result, tags);
+    await importPages(result, pages);
   } catch (e) {
     console.log(JSON.stringify(e, null, 2));
     console.error(e);

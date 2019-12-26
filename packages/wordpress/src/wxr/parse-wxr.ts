@@ -6,6 +6,7 @@ import util from 'util';
 import xml from 'xml2js';
 import { concatTemplate } from './concat-template';
 import slugify from 'slugify';
+import { autop } from '@wordpress/autop';
 
 const IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 
@@ -92,9 +93,27 @@ const transformEncodedHtmlContent = (
   post: any,
   attachments: any,
 ) => {
+  html = html[0];
+
+  // Strip short codes.
+  html = html.replace(/\[\w+[^\]]*]/g, '');
+
+  html = autop(html);
+
+  // html = html
+  //   .split(/\n+/)
+  //   .map(line => {
+  //     if (line.trim().startsWith('<')) {
+  //       return line;
+  //     } else {
+  //       return '<p>' + line + '</p>';
+  //     }
+  //   })
+  //   .join('\n');
+
   const featuredImage = getFeaturedImage(post, attachments, images);
 
-  const $ = cheerio.load(html[0]);
+  const $ = cheerio.load(html);
 
   // const base = new URL(url);
 
@@ -167,8 +186,8 @@ const transformEncodedHtmlContent = (
         const imageUrl = new URL(
           src
             .replace(
-              /https:\/\/[^.]+.wp.com\/culturetrekking.com\//,
-              'https://culturetrekking.com/',
+              /https:\/\/[^.]+.wp.com\/thetravelinggals.com\//,
+              'https://thetravelinggals.com/',
             )
             .replace(/-\d+x\d+\./, '.'),
         );
@@ -242,8 +261,13 @@ const transformPage = (post: any, attachments: any, images: any) => {
         ]
       : undefined,
     path:
-      status === 'draft' ? slugifyPath(title) : new URL(post.link[0]).pathname,
-    publishAt: status === 'draft' ? null : new Date(post.pubDate[0]),
+      status === 'draft' || status === 'private'
+        ? slugifyPath(title)
+        : new URL(post.link[0]).pathname,
+    publishAt:
+      status === 'draft' || status === 'private'
+        ? null
+        : new Date(post.pubDate[0]),
     content: transformEncodedHtmlContent(
       title,
       '',
